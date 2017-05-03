@@ -20,7 +20,7 @@ Best wishes,
 Jana McPherson
 janam@calgaryzoo.com
 
-Repository Contents
-README.md - this text file
-Manual.pdf: an R-style manual that describes the functions’ definitions, arguments and outputs
-code: a folder containing the simul.comms and simul.comms.2 functions as R scripts
+**Repository Contents**  
+README.md - this text file  
+Manual.pdf: an R-style manual that describes the functions’ definitions, arguments and outputs  
+code: a folder containing the simul.comms and simul.comms.2 functions as R scripts  
