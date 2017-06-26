@@ -166,17 +166,19 @@ dimnames(abun)<-list(names.com, names.sp)
 
 # Finally, track min, max, range, skewness and kurtosis in trait values and 
 # trait likelihood for the species pool and per community, plus user input values
-comstats<-as.data.frame(matrix(NA, nrow=1+r*l.s, ncol=20+t*13))
+comstats<-as.data.frame(matrix(NA, nrow=1+r*l.s, ncol=26+t*13))
 dimnames(comstats)[[2]]<-c("Site", "SR_pool", "SR_site", "N_dups", "N_traits",
 paste("T", rep(1:t, each=13), c("_dist", "_sd", "_type", "_levels", "_setmin", "_obsmin", "_setmax", "_obsmax", "_range", "_unique.values", "_var", "_skewness", "_kurtosis"), sep=""),
-"likeli_min", "likeli_max", "likeli_range", "likeli_var", "likeli_skewness", "likeli_kurtosis", "presence", "abundance", "abun_dist", "abun_sd", "abun_min", "abun_max", "abun_var", "abun_skewness", "abun_kurtosis")
+"likeli_min", "likeli_max", "likeli_range", "likeli_var", "likeli_skewness", "likeli_kurtosis", "presence", "abundance", "abun_dist", "abun_sd", "abun_min", "abun_max", "abun_var", "abun_skewness", "abun_kurtosis",
+"tot_abun", "relabun_min", "relabun_max", "relabun_var", "relabun_skewness", "relabun_kurtosis")
+
 comstats$Site<-c("pool", names.com)
 comstats$SR_pool<-p
 comstats$SR_site<-c(p, nb.sp)
 comstats$N_dups<-dups
 comstats$N_traits<-t
 comstats$presence<-presence
- comstats$abundance<-abundance
+comstats$abundance<-abundance
 comstats$abun_dist<-abun.dist
 comstats$abun_sd<-abun.sd
 for(i in 0:(r*l.s)){
@@ -195,6 +197,12 @@ for(i in 0:(r*l.s)){
 			comstats$abun_var[i+1]<-NA
 			comstats$abun_skewness[i+1]<-NA
 			comstats$abun_kurtosis[i+1]<-NA
+			comstats$tot_abun[i+1]<-NA
+    		comstats$relabun_min[i+1]<-NA
+    		comstats$relabun_max[i+1]<-NA
+    		comstats$relabun_var[i+1]<-NA
+    		comstats$relabun_skewness[i+1]<-NA
+    		comstats$relabun_kurtosis[i+1]<-NA
 		}else{
 			indx<-which(abun[i,]>0)
 			comstats$likeli_min[i+1]<-min(traits.prob[indx])
@@ -208,6 +216,12 @@ for(i in 0:(r*l.s)){
 			comstats$abun_var[i+1]<-var(abun[i,indx])
 			comstats$abun_skewness[i+1]<-skewness(abun[i,indx])
 			comstats$abun_kurtosis[i+1]<-kurtosis(abun[i,indx])
+			comstats$tot_abun[i+1]<-sum(abun[i,indx])
+    		comstats$relabun_min[i+1]<-min(abun[i,indx]/sum(abun[i,indx]))
+    		comstats$relabun_max[i+1]<-max(abun[i,indx]/sum(abun[i,indx]))
+    		comstats$relabun_var[i+1]<-var(abun[i,indx]/sum(abun[i,indx]))
+    		comstats$relabun_skewness[i+1]<-skewness(abun[i,indx]/sum(abun[i,indx]))
+    		comstats$relabun_kurtosis[i+1]<-kurtosis(abun[i,indx]/sum(abun[i,indx]))
 			
 		} # end if-else
 
