@@ -6,7 +6,7 @@ This repository contains R code for the paper
 
 by Jana M. McPherson, Lauren A. Yeager, and Julia K. Baum
 
-currently under review by Methods in Ecology and Evolution. 
+accepted for publication by Methods in Ecology and Evolution. 
 
 
 The purpose of sharing the code here on GitHub is to make it available in executable format. The same code is available in pdf format as an appendix to the paper.
