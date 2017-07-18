@@ -1,5 +1,7 @@
 # sim-ecol-communities
 
+DOI 10.5281/zenodo.831710
+
 This repository contains R code for the paper
 
 'A simulation tool to scrutinise the behaviour of functional diversity metrics'
